@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Words</title>
+        <meta charset="utf-8"/>
+        
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'dictionary/style.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Rajdhani:wght@300&display=swap" rel="stylesheet">
+                
+    </head>
+    <body>
+        <div class="bod2">
+            <a href="{% url 'search' %}">
+                <button class='back-button'>Go back</button>
+            </a>
+            <div class="word-box">
+                <h1 class='word'>{{ word }}</h1>
+                {% if word not in suggested %}
+                    <div class='suggestions'>
+                        <p>Or did you mean:</p>
+                        {% for sug in suggested %}
+                            <a href="{% url 'output' sug %}">
+                                <button class='sug-button'>{{ sug }}</button>
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+            </div>
+            {% for key, value in list %}
+                <div class="box-2">
+                    <h2>{{ key }}</h2>
+                    <ul>
+                        {% for val in value %}
+                            <li>{{ val }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+            {% if meanings is None %}
+                <div class="box-2">
+                    
+                    <h1>Sorry, this word does not currently exist in our dictionary.</h1>
+                </div>
+            {% endif %}
+        </div>
+    </body>
+</html>

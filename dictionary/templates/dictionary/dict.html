@@ -3,10 +3,21 @@
     <head>
         <title>Dashboard</title>
         <meta charset="utf-8"/>
+        
         {% load static %}
         <link rel="stylesheet" href="{% static 'dictionary/style.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Rajdhani:wght@300&display=swap" rel="stylesheet">
+                
     </head>
     <body>
-        
+        <div class="bod">
+            <h1 class="header">Dictionary.com</h1>
+            <form action="" method="get" class="search">
+                <input type="text" name="word" class="search-input" placeholder="Search something...">
+                <button type="submit" class="search-button" name="search_button">🔍</button>
+            </form>
+        </div>
     </body>
 </html>
