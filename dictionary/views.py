@@ -12,7 +12,7 @@ def home(request):
 
 def output(request, word):
     dictionary = PyDictionary()
-    meanings = dictionary.meaning(difflib.get_close_matches(word, english_words_set)[0])
+    meanings = dictionary.meaning(word)
     new_list = []
     if meanings is not None:
         for key, value in meanings.items():
@@ -23,5 +23,5 @@ def output(request, word):
         'list': new_list, 
         'meanings': meanings
     }
-    print(context['suggested'])
+    print(context['meanings'])
     return render(request, 'dictionary/output.html', context)
